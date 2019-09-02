@@ -1,0 +1,83 @@
+<ion-header no-border *ngIf="!takingPhoto">
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-back-button class="text-navy" text="regresar"></ion-back-button>
+        </ion-buttons>
+        <!--<ion-title>cerrandoVisita</ion-title>-->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-grid [ngClass]="{'ion-padding-top':takingPhoto}">
+        <ion-row>
+            <ion-col size-xs="6" size-md="5" offset-md="1" size-lg="4" offset-lg="2">
+                <img src="../../../assets/images/logotam.png">
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-padding-top" *ngIf="!takingPhoto">
+            <ion-col size-xs="12" size-md="10" offset-md="1" size-lg="8" offset-lg="2">
+                <ion-list lines="none" class="ion-no-margin">
+                    <ion-item class="item-box no-padding">
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col size="4" class="ion-text-start">
+                                    <strong>{{obraData.No_Folio_Proyecto}}</strong>
+                                </ion-col>
+                                <ion-col size="8" class="ion-text-end text-blue">
+                                    <strong>{{obraData.Contrato_No || '--------'}}</strong>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col>
+                                    <ion-label class="description" text-wrap>{{obraData.Nombre_Proyecto}}</ion-label>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-text-justify ion-padding-start ion-padding-end" *ngIf="!takingPhoto">
+            <ion-col size-xs="12" size-md="10" offset-md="1" size-lg="8" offset-lg="2">
+                <ion-label><small>Para terminar su visita debe de registrar unas fotos de cierre de la manera en que se enlistan.</small></ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!takingPhoto">
+            <ion-col size-xs="12" size-md="10" offset-md="1" size-lg="8" offset-lg="2">
+                <!--lista-->
+                <ion-list>
+                    <ion-item *ngFor="let item of fotos; let i=index" (click)="takePicture(i)">
+                        <ion-icon slot="start" name="camera" class="big"></ion-icon>
+                        <ion-label>{{item.Tipo}}</ion-label>
+                        <ion-icon *ngIf="item.Foto_Tomada=='SI'" slot="end" name="checkmark" class="big-green"></ion-icon>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!takingPhoto">
+            <ion-col size-xs="12" size-md="10" offset-md="1" size-lg="8" offset-lg="2">
+                <ion-button class="btn-green" size="large" expand="block" (click)="finish()">Terminar</ion-button>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="takingPhoto">
+            <ion-col size-xs=" 12 " size-md="10 " offset-md="1 " size-lg="8 " offset-lg="2 ">
+                <img [src]="sanitize(this.imageToUpload.path) " class="w-100 ">
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="takingPhoto">
+            <ion-col size-xs="12 " size-md="10 " offset-md="1 " size-lg="8 " offset-lg="2 ">
+                <ion-input type="text " placeholder="Comentarios opcionales " [(ngModel)]="comments " class="input-text ion-padding-start "></ion-input>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="takingPhoto">
+            <ion-col size-xs="5 " size-md="4 " offset-md="1 " size-lg="3 " offset-lg="2 ">
+                <ion-button color="danger " expand="block " (click)="clearValues() ">cancelar</ion-button>
+            </ion-col>
+            <ion-col size-xs="5 " offset-xs="2 " size-md="4 " offset-md="2 " size-lg="3 " offset-lg="2 ">
+                <ion-button class="btn-green " expand="block " (click)="probando() ">guardar foto</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

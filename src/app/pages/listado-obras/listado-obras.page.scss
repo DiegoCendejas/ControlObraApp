@@ -1,0 +1,32 @@
+$color-light-blue:#43b4e4;
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.item-box {
+    border: 1px solid #ccc;
+}
+
+.description {
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.no-padding {
+    --padding-start: 0px;
+    --padding-end: 0px;
+    --inner-padding-end: 0px;
+}
+
+.text-blue {
+    color: $color-light-blue;
+}
+
+ion-item {
+    font-size: 9px;
+}

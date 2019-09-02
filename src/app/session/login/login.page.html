@@ -1,0 +1,26 @@
+<ion-content class="ion-padding">
+
+    <ion-grid class="ion-padding-top">
+        <ion-row justify-content-center class="ion-padding-top ion-padding-bottom">
+            <ion-col size-xs="10" size-md="6" size-lg="5">
+                <img class="mt-5" src="../../../assets/images/logotam.png">
+            </ion-col>
+        </ion-row>
+        <ion-row justify-content-center class="mt-4 ion-padding-top">
+            <ion-col size-xs="10" size-md="6" size-lg="5">
+                <ion-input placeholder="Usuario" [(ngModel)]="user" class="input-text ion-padding-start"></ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row justify-content-center class="ion-padding-top">
+            <ion-col size-xs="10" size-md="6" size-lg="5">
+                <ion-input type="password" placeholder="Contraseña" [(ngModel)]="password" class="input-text ion-padding-start"></ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row justify-content-center class="ion-padding-top">
+            <ion-col size-xs="10" size-md="6" size-lg="5">
+                <ion-button class="btn-login" expand="block" (click)="submit()">Entrar</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>
